@@ -12,24 +12,24 @@ Weekend Challenge
 
 ///// to do list //////
 [X] make a to do list
-[ ] create an input form that has:
-    [ ] employee first name
-    [ ] last name
-    [ ] ID number
-    [ ] job title 
-    [ ] annual salary
-[ ] make a submit button, on click button should:
-    [ ] collect info
-    [ ] store info
-    [ ] calculate costs
-    [ ] append info to DOM
-    [ ] clear input fields
-[ ] calculate the total monthly salary costs
-    [ ] display total monthly costs
-    [ ] if total monthly cost > 20,000, add 
+[x] create an input form that has:
+    [x] employee first name
+    [x] last name
+    [x] ID number
+    [x] job title 
+    [x] annual salary
+[X] make a submit button, on click button should:
+    [x] collect info
+    [x] store info
+    [x] append info to DOM
+    [x] clear input fields
+[x] calculate the total monthly salary costs
+    [x] calculate costs
+    [x] display total monthly costs
+    [x] if total monthly cost > 20,000, add 
         red background color to display
 [ ] create a delete button, that:
-    [ ] removes employee from DOM
+    [x] removes employee from DOM
         **stretch goals**
         [ ] update total monthly cost when 
             employee is removed
