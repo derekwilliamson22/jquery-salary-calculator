@@ -31,5 +31,5 @@ Weekend Challenge
 [ ] create a delete button, that:
     [x] removes employee from DOM
         **stretch goals**
-        [ ] update total monthly cost when 
+        [x] update total monthly cost when 
             employee is removed

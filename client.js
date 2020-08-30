@@ -36,8 +36,11 @@ function addEmployee() {
 
 function onReady() {
   pageLoad();
+  calculateTotalAnnualSalary();
+  calculateTotalMonthlyCosts();
+
   $(`.addEmployeeBtn`).on(`click`, addEmployee);
-  $(document).on(`click`, '.removeEmployeeBtn', removeEmployee)
+  $(document).on(`click`, ".removeEmployeeBtn", removeEmployee);
 } // end onReady
 
 function pageLoad() {
@@ -116,7 +119,7 @@ function showEmployee() {
         <td><button class="removeEmployeeBtn">Delete</button></td>
         </tr>
     `);
-    }
+  }
 } // end showEmployees
 
 function calculateTotalAnnualSalary() {
@@ -133,21 +136,27 @@ function calculateTotalMonthlyCosts() {
   $(`#totalMonthlySalaryCost`).append(totalMonthlySalaryCosts);
   if (totalMonthlySalaryCosts >= 20000) {
     $(`#totalMonthlySalaryCost`).css(`background-color`, `red`);
-    $(`#totalMonthlySalaryCost`).css(`color`, `white`);
+  }
+  if (totalMonthlySalaryCosts < 20000) {
+      $(`#totalMonthlySalaryCost`).css(`background-color`, `white`);
   }
 } // end calculateTotalMonthlyCosts
 
-function removeEmployee(){
-let removeText = $(this).text();
-    if (removeText === "Delete") {
-        $(this).parent().parent().remove();
-
+// total hat tip to this video for providing the inspiration to add an id to the first element of the table
+// https://www.youtube.com/watch?v=zatTQcswPUs
+function removeEmployee() {
+  let removeText = $(this).text();
+  let removeTarget = $(this).parent().parent();
+  let removeTargetId = $(removeTarget).attr("id");
+  if (removeText === "Delete") {
+    $(this).parent().parent().remove();
+    for (let i = 0; i < employees.length; i++) {
+      const employee = employees[i];
+      if (`${[i]}` === removeTargetId) {
+        employees.splice([i], 1);
+      }
     }
-
-
-
-
-
-
-
+    calculateTotalAnnualSalary();
+    calculateTotalMonthlyCosts();
+  }
 } // end removeEmployee
