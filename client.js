@@ -34,11 +34,30 @@ function addEmployee() {
   calculateTotalMonthlyCosts();
 } // end addEmployee
 
+function calculateTotalAnnualSalary() {
+  let totalAnnualSalary = 0;
+  for (let i = 0; i < employees.length; i++) {
+    totalAnnualSalary += Number(employees[i].annualSalary);
+  }
+  return totalAnnualSalary;
+} // end calculateTotalAnnualSalary
+
+function calculateTotalMonthlyCosts() {
+  let totalMonthlySalaryCosts = Math.round(calculateTotalAnnualSalary() / 12);
+  $(`#totalMonthlySalaryCost`).empty();
+  $(`#totalMonthlySalaryCost`).append(totalMonthlySalaryCosts);
+  if (totalMonthlySalaryCosts >= 20000) {
+    $(`#totalMonthlySalaryCost`).css(`background-color`, `red`);
+  }
+  if (totalMonthlySalaryCosts < 20000) {
+    $(`#totalMonthlySalaryCost`).css(`background-color`, `white`);
+  }
+} // end calculateTotalMonthlyCosts
+
 function onReady() {
   pageLoad();
   calculateTotalAnnualSalary();
   calculateTotalMonthlyCosts();
-
   $(`.addEmployeeBtn`).on(`click`, addEmployee);
   $(document).on(`click`, ".removeEmployeeBtn", removeEmployee);
 } // end onReady
@@ -81,68 +100,33 @@ function pageLoad() {
 
   //Add Employees Table
   $(`.employeesBox`).append(`
-<table>
+<table class="employeeInfo">
             <thead>
                 <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>ID Number</th>
-                <th>Job Title</th>
-                <th>Salary</th>
-                <th></th> 
+                <th class="tableContents">First Name</th>
+                <th class="tableContents">Last Name</th>
+                <th class="tableContents">ID Number</th>
+                <th class="tableContents">Job Title</th>
+                <th class="tableContents">Salary</th>
+                <th class="tableContents"></th> 
                 </tr>
             </thead>
             <tbody class="employeeTable">
             </tbody>
-            <tfoot>
+            <tfoot class="tableFoot">
             </tfoot>
         </table>
 `); // end Add Employees Table
 
   // h2 total monthly salary costs
   $(`.employeesBox`).append(`
-<h2>Total Monthly Salary Cost: $<span id="totalMonthlySalaryCost"></span></h2>
+<h2 class="totalMonthlySalaryCost">Total Monthly Salary Cost:
+ $<span id="totalMonthlySalaryCost"></span></h2>
 `); // end h2 total monthly salary costs
 } // end pageLoad
 
-function showEmployee() {
-  $(`.employeeTable`).empty();
-  for (let i = 0; i < employees.length; i++) {
-    const employee = employees[i];
-    $(`.employeeTable`).append(`
-    <tr id="${[i]}"> 
-        <td>${employee.firstName}</td>
-        <td>${employee.lastName}</td>
-        <td>${employee.idNumber}</td>
-        <td>${employee.jobTitle}</td>
-        <td>${employee.annualSalary}</td>
-        <td><button class="removeEmployeeBtn">Delete</button></td>
-        </tr>
-    `);
-  }
-} // end showEmployees
-
-function calculateTotalAnnualSalary() {
-  let totalAnnualSalary = 0;
-  for (let i = 0; i < employees.length; i++) {
-    totalAnnualSalary += Number(employees[i].annualSalary);
-  }
-  return totalAnnualSalary;
-} // end calculateTotalAnnualSalary
-
-function calculateTotalMonthlyCosts() {
-  let totalMonthlySalaryCosts = Math.round(calculateTotalAnnualSalary() / 12);
-  $(`#totalMonthlySalaryCost`).empty();
-  $(`#totalMonthlySalaryCost`).append(totalMonthlySalaryCosts);
-  if (totalMonthlySalaryCosts >= 20000) {
-    $(`#totalMonthlySalaryCost`).css(`background-color`, `red`);
-  }
-  if (totalMonthlySalaryCosts < 20000) {
-      $(`#totalMonthlySalaryCost`).css(`background-color`, `white`);
-  }
-} // end calculateTotalMonthlyCosts
-
-// total hat tip to this video for providing the inspiration to add an id to the first element of the table
+// total hat tip to this video for providing the inspiration to add an id with a loop
+// to the tr element of the deleted item of the table
 // https://www.youtube.com/watch?v=zatTQcswPUs
 function removeEmployee() {
   let removeText = $(this).text();
@@ -160,3 +144,26 @@ function removeEmployee() {
     calculateTotalMonthlyCosts();
   }
 } // end removeEmployee
+
+function showEmployee() {
+  $(`.employeeTable`).empty();
+  for (let i = 0; i < employees.length; i++) {
+    const employee = employees[i];
+    $(`.employeeTable`).append(`
+    <tr id="${[i]}"> 
+        <td class="tableContents">${employee.firstName}</td>
+        <td class="tableContents">${employee.lastName}</td>
+        <td class="tableContents">${employee.idNumber}</td>
+        <td class="tableContents">${employee.jobTitle}</td>
+        <td class="tableContents">${employee.annualSalary}</td>
+        <td class="deleteBtn"><button class="removeEmployeeBtn">Delete</button></td>
+        </tr>
+    `);
+    if ((`${[i]}` % 2) == 0 ) {
+    $(`#${[i]}`).css(`background-color`, `white`)
+    }
+    else {
+    $(`#${[i]}`).css(`background-color`, `#abb4b7`)
+    }
+  }
+} // end showEmployees

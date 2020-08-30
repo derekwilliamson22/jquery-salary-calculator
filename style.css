@@ -1,4 +1,99 @@
-input {
+.salaryCalculatorBox {
+  margin: auto;
+  display: inline-block;
+  border: 2px solid black;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-font-size: 16px;
+.salaryCalculatorBox {
+  background-color: #e8f5f9;
+}
+
+header {
+  background-color: #3b3bfd;
+}
+
+header h1 {
+  margin: auto;
+  padding: 5px;
+  text-align: center;
+  color: aliceblue;
+}
+
+input {
+  border: 2px solid black;
+}
+
+h2 {
+  margin: auto;
+  font-size: 20px;
+}
+
+.addEmployeeBox {
+  padding: 5px;
+}
+
+.addEmployeeBox h2 {
+  padding: 10px 0px 10px 5px;
+  margin: auto;
+}
+
+#firstName {
+  padding: 0px 0px 0px 5px;
+}
+
+input {
+  font-size: 16px;
+  height: 25px;
+}
+
+.addEmployeeBtn {
+  font-size: 16px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.employeesBox {
+  padding: 5px;
+}
+
+.employeesBox h2 {
+    padding: 10px 0px 10px 5px;
+    margin: auto;
+}
+
+thead {
+  background-color:  #abb4b7;
+}
+
+.employeeInfo {
+border: 2px solid black;
+}
+
+.tableContents {
+  text-align: left;
+  width: 10em;
+  padding: 5px 0px 5px 5px;
+  border: 2px solid black;
+}
+
+td.deleteBtn {
+width: 10em;
+padding: 0em 1em 0em 1em;
+border: 2px solid black;
+text-align: center;
+}
+
+.removeEmployeeBtn {
+margin-left: auto;
+margin-right: auto;
+}
+
+.tableFoot {
+width: 100%    
+}
+
+h2.totalMonthlySalaryCost {
+    text-align: right;
+  padding: 20px 5px 10px 0px;
 }

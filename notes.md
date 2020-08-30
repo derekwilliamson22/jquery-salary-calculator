@@ -28,7 +28,7 @@ Weekend Challenge
     [x] display total monthly costs
     [x] if total monthly cost > 20,000, add 
         red background color to display
-[ ] create a delete button, that:
+[x] create a delete button, that:
     [x] removes employee from DOM
         **stretch goals**
         [x] update total monthly cost when 
