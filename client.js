@@ -130,20 +130,37 @@ function pageLoad() {
 // https://www.youtube.com/watch?v=zatTQcswPUs
 function removeEmployee() {
   let removeText = $(this).text();
+    console.log('this is removeText', removeText);
+    
   let removeTarget = $(this).parent().parent();
+console.log('this is removeTarget', removeTarget);
+
   let removeTargetId = $(removeTarget).attr("id");
+console.log('this is removeTargetId', removeTargetId);
+
   if (removeText === "Delete") {
+    $(this).parent().parent().remove();
+  }
+  for (let i = 0; i < employees.length; i++) {
+    const employee = employees[i];
+    if (`${[i]}` === removeTargetId) {
+      employees.splice([i], 1);
+    }
+  }
+  
+  /*if (removeText === "Delete") {
     $(this).parent().parent().remove();
     for (let i = 0; i < employees.length; i++) {
       const employee = employees[i];
       if (`${[i]}` === removeTargetId) {
         employees.splice([i], 1);
       }
-    }
+    }*/
+    showEmployee();
     calculateTotalAnnualSalary();
     calculateTotalMonthlyCosts();
   }
-} // end removeEmployee
+ // end removeEmployee
 
 function showEmployee() {
   $(`.employeeTable`).empty();
