@@ -50,7 +50,7 @@ function calculateTotalMonthlyCosts() {
     $(`#totalMonthlySalaryCost`).css(`background-color`, `red`);
   }
   if (totalMonthlySalaryCosts < 20000) {
-    $(`#totalMonthlySalaryCost`).css(`background-color`, `white`);
+    $(`#totalMonthlySalaryCost`).css(`background-color`, `#e8f5f9`);
   }
 } // end calculateTotalMonthlyCosts
 
