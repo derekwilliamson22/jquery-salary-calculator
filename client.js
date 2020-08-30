@@ -159,11 +159,6 @@ function showEmployee() {
         <td class="deleteBtn"><button class="removeEmployeeBtn">Delete</button></td>
         </tr>
     `);
-    if ((`${[i]}` % 2) == 0 ) {
-    $(`#${[i]}`).css(`background-color`, `white`)
+    $( `tbody tr:even` ).addClass( "white" );
     }
-    else {
-    $(`#${[i]}`).css(`background-color`, `#abb4b7`)
-    }
-  }
 } // end showEmployees
